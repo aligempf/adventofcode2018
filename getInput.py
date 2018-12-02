@@ -1,16 +1,16 @@
 import urllib2
 
-def safeInt(a):
+def safeTypeConvert(a, typeFun):
     try:
-        return int(a)
+        return typeFun(a)
     except:
         return None
 
+def safeInt(a):
+    return safeTypeConvert(a, int)
+
 def safeString(a):
-    try:
-        return str(a)
-    except:
-        return None
+    return safeTypeConvert(a, str)
 
 class InputValueReceiver:
 
