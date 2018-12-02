@@ -1,9 +1,7 @@
 import sys
+import getInput
 
-inputList = []
-
-with open("input.txt") as fin:
-    inputList = fin.read().split('\n')
+inputList = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/1/input").inputValues
 
 frequency = 0
 usedFrequencies = set([frequency])
@@ -12,7 +10,7 @@ duplicateNotFound = True
 
 while duplicateNotFound:
     for arg in inputList:
-        frequency += int(arg)
+        frequency += arg
         if frequency in usedFrequencies:
             duplicateNotFound = False
             break
