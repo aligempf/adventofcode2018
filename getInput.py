@@ -1,8 +1,20 @@
 import urllib2
 
+def safeInt(a):
+    try:
+        return int(a)
+    except:
+        return None
+
+def safeString(a):
+    try:
+        return str(a)
+    except:
+        return None
+
 class InputValueReceiver:
 
-    def __init__(self, url="", fileLocation="", args=[]):
+    def __init__(self, url="", fileLocation="", args=[], sanitiser=safeString):
         if not url and not args and not fileLocation:
             raise NameError
         if url:
@@ -17,11 +29,10 @@ class InputValueReceiver:
         elif args:
             rawInputValues = args
 
-        intInputValues = map(self.safeInt, rawInputValues)
-        self.inputValues = filter(lambda a: not a is None, intInputValues)
+        self.inputValues = self.sanitiseInput(rawInputValues, sanitiser)
 
-    def safeInt(self, a):
-        try:
-            return int(a)
-        except:
-            pass
+    def sanitiseInput(self, rawInputValues, sanitiser):
+        # sanitiser is a function that returns the input in the correct type if valid
+        # or None if invalid, taking in a single parameter
+        sanitisedInputValues = map(sanitiser, rawInputValues)
+        return filter(lambda a: not a is None, sanitisedInputValues)
