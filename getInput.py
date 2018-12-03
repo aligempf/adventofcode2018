@@ -1,6 +1,8 @@
 import urllib2
 
 def safeTypeConvert(a, typeFun):
+    if a == "":
+        return None
     try:
         return typeFun(a)
     except:

@@ -2,6 +2,8 @@ import day1.puzzle1
 import day1.puzzle2
 import day2.puzzle1
 import day2.puzzle2
+import day3.puzzle1
+import day3.puzzle2
 import getInput
 import sys
 
@@ -20,10 +22,19 @@ if "1" in args:
     print(device2.frequencyLock)
 
 if "2" in args:
-    inputList2 = inputList = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/2/input", sanitiser=getInput.safeString).inputValues
+    inputList2 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/2/input", sanitiser=getInput.safeString).inputValues
 
     boxCheckSum = day2.puzzle1.boxCheckSum(inputList2)
     print(boxCheckSum)
 
     commonBoxLetters = day2.puzzle2.commonBoxLetters(inputList2)
     print(commonBoxLetters)
+
+if "3" in args:
+    inputList3 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/3/input", sanitiser=getInput.safeString).inputValues
+    
+    numOverlappingSquares = day3.puzzle1.numOverlappingSquares(inputList3)
+    print(numOverlappingSquares)
+
+    uniqueSquareID = day3.puzzle2.getUniqueSquareID(inputList3)
+    print(uniqueSquareID)
