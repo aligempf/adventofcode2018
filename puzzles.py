@@ -55,4 +55,4 @@ if "4" in args:
 
     maxGuard = day4.puzzle2.asleepMostAtMinute(guards)
 
-    print(maxGuard.ID * maxGuard.getMaxMinute())
+    print(maxGuard[0].ID * maxGuard[0].getMaxMinute())
