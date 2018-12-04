@@ -4,6 +4,8 @@ import day2.puzzle1
 import day2.puzzle2
 import day3.puzzle1
 import day3.puzzle2
+import day4.puzzle1
+import day4.puzzle2
 import getInput
 import sys
 
@@ -38,3 +40,19 @@ if "3" in args:
 
     uniqueSquareID = day3.puzzle2.getUniqueSquareID(inputList3)
     print(uniqueSquareID)
+
+if "4" in args:
+    inputList4 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/4/input", sanitiser=getInput.safeString).inputValues
+
+    sortedInput = day4.puzzle1.sortInput(inputList4)
+
+    shifts = [day4.puzzle1.Shift(events) for events in day4.puzzle1.parseInput(sortedInput)]
+    guards = day4.puzzle1.reduceByGuard(shifts)
+
+    sortedGuards = day4.puzzle1.sortGuardsBySleepTime(guards)
+
+    print(sortedGuards[0].ID * sortedGuards[0].getMaxMinute())
+
+    maxGuard = day4.puzzle2.asleepMostAtMinute(guards)
+
+    print(maxGuard.ID * maxGuard.getMaxMinute())
