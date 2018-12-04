@@ -1,8 +1,5 @@
 import datetime
 
-asleep = "asleep"
-awake = "awake"
-
 class Shift:
 	def __init__(self, eventTimes=[]):
 		if "begins shift" in eventTimes[0]:
