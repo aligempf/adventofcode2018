@@ -99,5 +99,5 @@ def reduceByGuard(shifts):
 		byGuard.add(guardTotal)
 	return byGuard
 
-def sortGuardsBySleepTime(guards, reverse=True):
+def sortGuardsByTotalSleepTime(guards, reverse=True):
 	return sorted(guards, key=lambda a: a.sleepingTime, reverse=reverse)

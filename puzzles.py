@@ -49,10 +49,10 @@ if "4" in args:
     shifts = [day4.puzzle1.Shift(events) for events in day4.puzzle1.parseInput(sortedInput)]
     guards = day4.puzzle1.reduceByGuard(shifts)
 
-    sortedGuards = day4.puzzle1.sortGuardsBySleepTime(guards)
+    sortedGuards = day4.puzzle1.sortGuardsByTotalSleepTime(guards)
 
     print(sortedGuards[0].ID * sortedGuards[0].getMaxMinute())
 
-    maxGuard = day4.puzzle2.asleepMostAtMinute(guards)
+    maxGuard = day4.puzzle2.sortGuardsByAsleepMostAtSameMinute(guards)
 
     print(maxGuard[0].ID * maxGuard[0].getMaxMinute())
