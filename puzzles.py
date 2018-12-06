@@ -8,6 +8,7 @@ import day4.puzzle1
 import day4.puzzle2
 import day5.puzzle1
 import day5.puzzle2
+import day6.puzzle1
 import getInput
 import sys
 
@@ -66,4 +67,15 @@ if "5" in args:
     reactedPolymersRemovedUnit = day5.puzzle2.getAllReactedPolymersRemovingUnit(inputList5)
     sortedRemovedUnitPolymers = day5.puzzle2.sortPolymersByLen(reactedPolymersRemovedUnit)
     print(len(sortedRemovedUnitPolymers[0]))
-    
+
+if "6" in args:
+    #inputList6 = getInput.InputValueReceiver(fileLocation="test6.txt", sanitiser=getInput.safeString).inputValues
+    inputList6 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/6/input", sanitiser=getInput.safeString).inputValues
+
+    grid = day6.puzzle1.parseInput(inputList6)
+    numClosestToFiniteLocations = grid.getNumPointsClosestToFiniteLocations()
+    largestFinite = grid.orderNumPointsClosestToLocation(numClosestToFiniteLocations)[0]
+
+    print(largestFinite, numClosestToFiniteLocations[largestFinite])
+
+    print(grid.getNumPointsCloserThanSumDistance(10000))
