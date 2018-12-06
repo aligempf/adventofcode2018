@@ -6,6 +6,8 @@ import day3.puzzle1
 import day3.puzzle2
 import day4.puzzle1
 import day4.puzzle2
+import day5.puzzle1
+import day5.puzzle2
 import getInput
 import sys
 
@@ -50,9 +52,18 @@ if "4" in args:
     guards = day4.puzzle1.reduceByGuard(shifts)
 
     sortedGuards = day4.puzzle1.sortGuardsByTotalSleepTime(guards)
-
     print(sortedGuards[0].ID * sortedGuards[0].getMaxMinute())
 
     maxGuard = day4.puzzle2.sortGuardsByAsleepMostAtSameMinute(guards)
-
     print(maxGuard[0].ID * maxGuard[0].getMaxMinute())
+
+if "5" in args:
+    inputList5 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/5/input", sanitiser=getInput.safeString).inputValues[0]
+    
+    reactedPolymer = day5.puzzle1.reactPolymer(inputList5)
+    print(len(reactedPolymer))
+
+    reactedPolymersRemovedUnit = day5.puzzle2.getAllReactedPolymersRemovingUnit(inputList5)
+    sortedRemovedUnitPolymers = day5.puzzle2.sortPolymersByLen(reactedPolymersRemovedUnit)
+    print(len(sortedRemovedUnitPolymers[0]))
+    
