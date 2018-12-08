@@ -40,6 +40,7 @@ class Grid:
         }
 
     def getSumOfDistanceFromLocations(self):
+        # for puzzle 2
         return {
             Point((x,y)): sum(Point((x,y)).distanceFromLocations(self).values())
                 for x in range(self.minCoords[0], self.maxCoords[0]+1)
@@ -47,6 +48,7 @@ class Grid:
         }
 
     def getNumPointsCloserThanSumDistance(self, max):
+        # for puzzle 2
         sumDistances = self.getSumOfDistanceFromLocations()
         return len(filter(lambda x: sumDistances[x] < max, sumDistances))
 

@@ -9,6 +9,8 @@ import day4.puzzle2
 import day5.puzzle1
 import day5.puzzle2
 import day6.puzzle1
+import day7.puzzle1
+import day7.puzzle2
 import getInput
 import sys
 
@@ -79,3 +81,18 @@ if "6" in args:
     print(largestFinite, numClosestToFiniteLocations[largestFinite])
 
     print(grid.getNumPointsCloserThanSumDistance(10000))
+
+if "7" in args:
+    #inputList7 = getInput.InputValueReceiver(fileLocation="test7.txt", sanitiser=getInput.safeString).inputValues
+    #inputList7 = getInput.InputValueReceiver(fileLocation="day7.txt", sanitiser=getInput.safeString).inputValues
+    inputList7 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/7/input", sanitiser=getInput.safeString).inputValues
+
+    manual = day7.puzzle1.Manual(inputList7)
+    manual.runAllSteps()
+
+    print(manual.stepOrder)
+
+    colabManual = day7.puzzle2.CollabarativeManual(inputList7, 5, baseTime=60)
+    colabManual.runAllSteps()
+
+    print(colabManual.time)

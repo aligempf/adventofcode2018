@@ -27,10 +27,10 @@ class InputSquare:
     def getSquares(self):
         return set((self.topLeft[0]+i,self.topLeft[1]+j) for i in range(self.sides[0]) for j in range(self.sides[1]))
 
-    def printSquare(self):
+    def __repr__(self):
         square = self.getSquares()
-        for x in range(self.topLeft[0]+self.sides[0]):
-            for y in range(self.topLeft[1] + self.sides[1]):
+        for y in range(self.topLeft[1]+self.sides[1]):
+            for x in range(self.topLeft[0] + self.sides[0]):
                 if (x, y) in square:
                     print("#"),
                 else:
