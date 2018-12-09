@@ -12,6 +12,8 @@ import day6.puzzle1
 import day7.puzzle1
 import day7.puzzle2
 import day8.puzzle1
+import day9.puzzle1
+import day9.puzzle2
 import getInput
 import sys
 
@@ -109,3 +111,18 @@ if "8" in args:
 
     print(tree.sumMetadata())
     print(tree.getRootNode().getValue())
+
+if "9" in args:
+    #inputList9 = getInput.InputValueReceiver(fileLocation="test9.txt", sanitiser=getInput.safeString).inputValues[0]
+    #inputList9 = getInput.InputValueReceiver(fileLocation="day9.txt", sanitiser=getInput.safeString).inputValues[0]
+    inputList9 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/9/input", sanitiser=getInput.safeString).inputValues[0]
+
+    parsedInput = day9.puzzle1.parseInput(inputList9)
+
+    circle = day9.puzzle1.Circle(parsedInput[0], parsedInput[1])
+    circle.playGame()
+    print(circle.getHighestScorePlayer())
+
+    bigCircle = day9.puzzle2.BigCircle(parsedInput[0], parsedInput[1])
+    bigCircle.playGame()
+    print(bigCircle.getHighestScorePlayer())
