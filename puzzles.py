@@ -11,6 +11,7 @@ import day5.puzzle2
 import day6.puzzle1
 import day7.puzzle1
 import day7.puzzle2
+import day8.puzzle1
 import getInput
 import sys
 
@@ -106,5 +107,5 @@ if "8" in args:
     tree = day8.puzzle1.LicenceTree(parsedInput)
     tree.doTree()
 
-    print tree.sumMetadata()
-    print tree.getRootNode().getValue()
+    print(tree.sumMetadata())
+    print(tree.getRootNode().getValue())
