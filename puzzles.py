@@ -96,3 +96,15 @@ if "7" in args:
     colabManual.runAllSteps()
 
     print(colabManual.time)
+
+if "8" in args:
+    #inputList8 = getInput.InputValueReceiver(fileLocation="test8.txt", sanitiser=getInput.safeString).inputValues[0]
+    #inputList8 = getInput.InputValueReceiver(fileLocation="day8.txt", sanitiser=getInput.safeString).inputValues[0]
+    inputList8 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/8/input", sanitiser=getInput.safeString).inputValues[0]
+    parsedInput = day8.puzzle1.parseInput(inputList8)
+
+    tree = day8.puzzle1.LicenceTree(parsedInput)
+    tree.doTree()
+
+    print tree.sumMetadata()
+    print tree.getRootNode().getValue()
