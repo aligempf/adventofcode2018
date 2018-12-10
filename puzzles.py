@@ -14,6 +14,7 @@ import day7.puzzle2
 import day8.puzzle1
 import day9.puzzle1
 import day9.puzzle2
+import day10.puzzle1
 import getInput
 import sys
 
@@ -126,3 +127,15 @@ if "9" in args:
     bigCircle = day9.puzzle2.BigCircle(parsedInput[0], parsedInput[1])
     bigCircle.playGame()
     print(bigCircle.getHighestScorePlayer())
+
+if "10" in args:
+    #inputList10 = getInput.InputValueReceiver(fileLocation="test10.txt", sanitiser=getInput.safeString).inputValues
+    #inputList10 = getInput.InputValueReceiver(fileLocation="day10.txt", sanitiser=getInput.safeString).inputValues
+    inputList10 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/10/input", sanitiser=getInput.safeString).inputValues
+
+    sky = day10.puzzle1.Sky(inputList10)
+
+    while not sky.checkCloseness():
+        sky.moveStars()
+    print("HIT at " + str(sky.time))
+    print(sky)
