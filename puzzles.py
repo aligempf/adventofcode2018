@@ -15,6 +15,7 @@ import day8.puzzle1
 import day9.puzzle1
 import day9.puzzle2
 import day10.puzzle1
+import day11.puzzle1
 import getInput
 import sys
 
@@ -139,3 +140,10 @@ if "10" in args:
         sky.moveStars()
     print("HIT at " + str(sky.time))
     print(sky)
+
+if "11" in args:
+    fuelCellSquare = day11.puzzle1.Square(2568)
+    print fuelCellSquare.getMaxSquare(3)
+    for size in range(1, 301):
+        print fuelCellSquare.getMaxSquare(size), fuelCellSquare.maxSquareStart, fuelCellSquare.maxSquareValue
+    print fuelCellSquare.maxSquareStart, fuelCellSquare.maxSquareValue
