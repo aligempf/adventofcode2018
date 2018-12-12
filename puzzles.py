@@ -144,6 +144,4 @@ if "10" in args:
 if "11" in args:
     fuelCellSquare = day11.puzzle1.Square(2568)
     print fuelCellSquare.getMaxSquare(3)
-    for size in range(1, 301):
-        print fuelCellSquare.getMaxSquare(size), fuelCellSquare.maxSquareStart, fuelCellSquare.maxSquareValue
-    print fuelCellSquare.maxSquareStart, fuelCellSquare.maxSquareValue
+    print fuelCellSquare.getMaxSquareOfSquares()
