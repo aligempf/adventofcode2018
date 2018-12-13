@@ -17,6 +17,7 @@ import day9.puzzle2
 import day10.puzzle1
 import day11.puzzle1
 import day12.puzzle1
+import day13.puzzle1
 import getInput
 import sys
 
@@ -170,3 +171,15 @@ if "12" in args:
     (secondSum, secondTime) = (bigPots.getGenerationSum(), bigPots.time)
 
     print((secondSum - firstSum) * (50000000000 - secondTime) + secondSum)
+
+if "13" in args:
+    #inputList13 = getInput.InputValueReceiver(fileLocation="test13.txt", sanitiser=getInput.safeString).inputValues
+    #inputList13 = getInput.InputValueReceiver(fileLocation="day13.txt", sanitiser=getInput.safeString).inputValues
+    inputList13 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/13/input", sanitiser=getInput.safeString).inputValues
+
+    track = day13.puzzle1.Track(inputList13)
+    # print(track)
+    while len(track.carts) > 1:
+        track.tick(True)
+        # print(track)
+    print(track.carts)
