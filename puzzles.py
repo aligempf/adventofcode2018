@@ -16,6 +16,7 @@ import day9.puzzle1
 import day9.puzzle2
 import day10.puzzle1
 import day11.puzzle1
+import day12.puzzle1
 import getInput
 import sys
 
@@ -145,3 +146,27 @@ if "11" in args:
     fuelCellSquare = day11.puzzle1.Square(2568)
     print fuelCellSquare.getMaxSquare(3)
     print fuelCellSquare.getMaxSquareOfSquares()
+
+if "12" in args:
+    #inputList12 = getInput.InputValueReceiver(fileLocation="test12.txt", sanitiser=getInput.safeString).inputValues
+    #inputList12 = getInput.InputValueReceiver(fileLocation="day12.txt", sanitiser=getInput.safeString).inputValues
+    inputList12 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/12/input", sanitiser=getInput.safeString).inputValues
+
+    pots = day12.puzzle1.Pots(inputList12)
+
+    print(pots)
+    for i in range(0, 20):
+        pots.doGeneration()
+
+    print(pots.getGenerationSum())
+
+    bigPots = day12.puzzle1.Pots(inputList12)
+
+    while not bigPots.repeating:
+        bigPots.doGeneration()
+
+    firstSum = bigPots.getGenerationSum()
+    bigPots.doGeneration()
+    (secondSum, secondTime) = (bigPots.getGenerationSum(), bigPots.time)
+
+    print((secondSum - firstSum) * (50000000000 - secondTime) + secondSum)
