@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 
 test?.txt
+day*.txt
 
 # C extensions
 *.so

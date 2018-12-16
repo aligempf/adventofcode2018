@@ -18,6 +18,7 @@ import day10.puzzle1
 import day11.puzzle1
 import day12.puzzle1
 import day13.puzzle1
+import day15.puzzle1
 import getInput
 import sys
 
@@ -183,3 +184,18 @@ if "13" in args:
         track.tick(True)
         # print(track)
     print(track.carts)
+
+if "15" in args:
+    #inputList15 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/15/input", sanitiser=getInput.safeString).inputValues
+    inputList15 = getInput.InputValueReceiver(fileLocation="day15.txt", sanitiser=getInput.safeString).inputValues
+ 
+    board = day15.puzzle1.Map(inputList15)
+
+    print board
+    while board.elves and board.goblins:
+        board.turn()
+
+    if board.goblins:
+        print board.turns * sum([goblin.HP for goblin in board.goblins])
+    elif board.elves:
+        print board.turns * sum([elf.HP for elf in board.elves])
