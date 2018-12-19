@@ -23,6 +23,7 @@ import day14.puzzle2
 import day15.puzzle1
 import day16.puzzle1
 import day16.puzzle2
+import day17.puzzle1
 import getInput
 import sys
 
@@ -238,7 +239,8 @@ if "15" in args:
     print(board.turns * sum([elf.HP for elf in board.elves]))
 
 if "16" in args:
-    inputList16 = getInput.InputValueReceiver(fileLocation="day16.txt", sanitiser=getInput.safeString).inputValues
+    #inputList16 = getInput.InputValueReceiver(fileLocation="day16.txt", sanitiser=getInput.safeString).inputValues
+    inputList16 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/16/input", sanitiser=getInput.safeString).inputValues
 
     testCases = day16.puzzle1.parseInput(inputList16)
     greaterThanTwo = 0
@@ -269,3 +271,14 @@ if "16" in args:
         cpu(code)
 
     print(cpu)
+
+if "17" in args:
+    # inputList17 = getInput.InputValueReceiver(fileLocation="test17.txt", sanitiser=getInput.safeString).inputValues
+    # inputList17 = getInput.InputValueReceiver(fileLocation="day17.txt", sanitiser=getInput.safeString).inputValues
+    inputList17 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/17/input", sanitiser=getInput.safeString).inputValues
+
+    ground = day17.puzzle1.Ground(inputList17)
+    ground.addWater()
+
+    print(len(set(ground.waterLocations.keys()).difference(ground.clayLocations)))
+    print(len(filter(lambda location: ground.waterLocations[location], ground.waterLocations)))
