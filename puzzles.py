@@ -18,6 +18,8 @@ import day10.puzzle1
 import day11.puzzle1
 import day12.puzzle1
 import day13.puzzle1
+import day14.puzzle1
+import day14.puzzle2
 import day15.puzzle1
 import getInput
 import sys
@@ -184,6 +186,21 @@ if "13" in args:
         track.tick(True)
         # print(track)
     print(track.carts)
+
+if "14" in args:
+    inputList14 = [3, 7]
+    numRecipesList = [7,9,3,0,6,1]
+    numRecipes = int("".join(map(str, numRecipesList)))
+
+    scoreboard = day14.puzzle2.RecipeSearchScoreboard(numRecipesList, inputList14)
+
+    while scoreboard.numBeforeLast10() < numRecipes:
+        scoreboard.tasteTest()
+    print scoreboard.getTenScoresAfter(numRecipes)
+
+    while not scoreboard.recipeFound:
+        scoreboard.tasteTest()
+    print(scoreboard.recipeIndex)
 
 if "15" in args:
     #inputList15 = getInput.InputValueReceiver(url="https://adventofcode.com/2018/day/15/input", sanitiser=getInput.safeString).inputValues
