@@ -191,7 +191,6 @@ if "15" in args:
  
     board = day15.puzzle1.Map(inputList15)
 
-    print board
     while board.elves and board.goblins:
         board.turn()
 
@@ -199,3 +198,22 @@ if "15" in args:
         print board.turns * sum([goblin.HP for goblin in board.goblins])
     elif board.elves:
         print board.turns * sum([elf.HP for elf in board.elves])
+
+    # can't binary search, could have a different set of paths
+    AP = 4
+    while True:
+        mean = int((min + max)/2)
+        print(min, max, mean)
+        if min == max - 1:
+            break
+        board = day15.puzzle1.Map(inputList15, elfAP=AP)
+        numElves = len(board.elves)
+        while len(board.elves) == numElves and board.goblins:
+            board.turn()
+
+        if numElves == len(board.elves):
+            break
+        AP += 1
+        
+    print(AP)
+    print(board.turns * sum([elf.HP for elf in board.elves]))

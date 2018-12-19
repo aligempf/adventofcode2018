@@ -1,7 +1,7 @@
 from collections import deque
 
 class Map:
-    def __init__(self, inputList):
+    def __init__(self, inputList, elfAP=3):
         self.positions = {}
         self.goblins = set()
         self.elves = set()
@@ -13,11 +13,10 @@ class Map:
                     position = Position((x,y), self)
                     self.positions[(x,y)] = position
                     if inputList[y][x] == "E":
-                        self.elves.add(Elf(position))
+                        self.elves.add(Elf(position, elfAP))
                     elif inputList[y][x] == "G":
                         self.goblins.add(Goblin(position))
         self.turns = 0
-                
 
     def sortUnits(self):
         return readingOrder(self.elves.union(self.goblins))
@@ -284,8 +283,8 @@ class SearchNode:
         return self.position[item]
 
 class Elf(Unit):
-    def __init__(self, position):
-        Unit.__init__(self, position, 200, 3)
+    def __init__(self, position, AP=3):
+        Unit.__init__(self, position, 200, AP)
         self.enemies = set([Goblin])
 
 class Goblin(Unit):
