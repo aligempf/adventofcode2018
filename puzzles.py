@@ -21,6 +21,8 @@ import day13.puzzle1
 import day14.puzzle1
 import day14.puzzle2
 import day15.puzzle1
+import day16.puzzle1
+import day16.puzzle2
 import getInput
 import sys
 
@@ -234,3 +236,36 @@ if "15" in args:
         
     print(AP)
     print(board.turns * sum([elf.HP for elf in board.elves]))
+
+if "16" in args:
+    inputList16 = getInput.InputValueReceiver(fileLocation="day16.txt", sanitiser=getInput.safeString).inputValues
+
+    testCases = day16.puzzle1.parseInput(inputList16)
+    greaterThanTwo = 0
+    possibleOpcodes = {}
+
+    for testCase in testCases:
+        opcodes = map(testCase, day16.puzzle1.FUNCTIONS)
+        matchingOpcodes = set(day16.puzzle1.FUNCTIONS[index] for index in range(len(day16.puzzle1.FUNCTIONS)) if opcodes[index])
+
+        if testCase.code[0] not in possibleOpcodes:
+            possibleOpcodes[testCase.code[0]] = set(day16.puzzle1.FUNCTIONS)
+        possibleOpcodes[testCase.code[0]] = possibleOpcodes[testCase.code[0]] & matchingOpcodes
+
+        if len(filter(lambda fun: fun, opcodes)) >= 3:
+            greaterThanTwo += 1
+
+    print(greaterThanTwo)
+
+    while any(map(lambda fun: len(possibleOpcodes[fun]) != 1, possibleOpcodes)):
+        possibleOpcodes = day16.puzzle2.figureOutCodes(possibleOpcodes)
+
+    possibleOpcodes = {opcode: list(possibleOpcodes[opcode])[0] for opcode in possibleOpcodes}
+
+    testProgram = day16.puzzle2.parseInput(inputList16)
+
+    cpu = day16.puzzle2.KnownCPU(possibleOpcodes)
+    for code in testProgram:
+        cpu(code)
+
+    print(cpu)
